@@ -1,19 +1,3 @@
-function mark_text(element) 
-{
-    element.innerText = "+++" + element.innerText;
-}
-
-console.log("content-script.js start");
-
-// var someText = document.body.textContent;
-// console.log(someText);
-
-// var someText = document.body.innerHTML;
-// console.log(someText);
-
-console.log(location.host);
-console.log(location.hostname);
-
 if (location.host === "example.com")
 {
     var someText = document.body.getElementsByTagName("h1");
@@ -43,6 +27,7 @@ if (location.host === "www.manhuagui.com")
         "笔与手铐与事实婚姻",
         "迷宫饭",
         "JK除灵师小茜",
+        "食粮人类RE",
     ];
 
     // document.body.style.backgroundColor = "blue";
@@ -56,5 +41,3 @@ if (location.host === "www.manhuagui.com")
         }
     }
 }
-
-console.log("content-script.js end");
