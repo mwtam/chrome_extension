@@ -1,7 +1,5 @@
 // Saves options to chrome.storage
 const saveOptions = () => {
-    const color = document.getElementById('color').value;
-    const likesColor = document.getElementById('like').checked;
     const settingJSON = document.getElementById('setting_json').value;
 
     chrome.storage.sync.set(
