@@ -1,43 +1,41 @@
-if (location.host === "example.com")
-{
-    var someText = document.body.getElementsByTagName("h1");
-    console.log(someText);
+chrome.storage.sync.get(
+    { settingJSON : '{}' },
+    (items) => {
+        const setting_json = JSON.parse(items.settingJSON);
 
-    document.body.style.backgroundColor = "yellow";
-    var targetHTML = document.body.getElementsByTagName("h1")[0].innerHTML;
-    document.body.getElementsByTagName("h1")[0].innerHTML = targetHTML.replace("Example", "<u>Example</u>");
+        for (let i in setting_json) {
+            const site = setting_json[i]['site'];
 
-    console.log("======");
-    var someText = document.body.getElementsByTagName("h1");
-    console.log(someText);
+            if (location.host !== site) {
+                continue;
+            }
 
-}
+            const class_name = setting_json[i]['class_name'];
+            const title = setting_json[i]['title'];
 
-if (location.host === "www.manhuagui.com")
-{
-    const manga = [
-        "影宅",
-        "旅馆生活・吸血鬼",
-        "如积雪般的永寂",
-        "葬送者芙莉莲",
-        "琉璃Dragon",
-        "说着「请将我的孩子杀死」的父母们",
-        "飞翔的魔女",
-        "吃货女仆",
-        "笔与手铐与事实婚姻",
-        "迷宫饭",
-        "JK除灵师小茜",
-        "食粮人类RE",
-    ];
+            ell = document.getElementsByClassName(class_name);
 
-    // document.body.style.backgroundColor = "blue";
-    ell = document.getElementsByClassName("ell")
-    console.log(ell[0].innerText);
-    for (let i in ell)
-    {
-        if (manga.includes(ell[i].innerText))
-        {
-            ell[i].innerText = "+++" + ell[i].innerText;
+            for (let i in ell) {
+                if (title.includes(ell[i].innerText)) {
+                    ell[i].innerText = "+++" + ell[i].innerText;
+                }
+            }
         }
     }
-}
+);
+
+// if (location.host === "example.com")
+// {
+//     document.body.style.backgroundColor = "yellow";
+
+//     var someText = document.body.getElementsByTagName("h1");
+//     console.log(someText);
+
+//     var targetHTML = document.body.getElementsByTagName("h1")[0].innerHTML;
+//     document.body.getElementsByTagName("h1")[0].innerHTML = targetHTML.replace("Example", "<u>Example</u>");
+
+//     console.log("======");
+//     var someText = document.body.getElementsByTagName("h1");
+//     console.log(someText);
+
+// }
