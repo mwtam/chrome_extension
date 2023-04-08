@@ -10,19 +10,14 @@ chrome.storage.sync.get(
                 continue;
             }
 
-            const class_name = setting_json[i]['class_name'];
             const titles = setting_json[i]['title'];
 
-            ell = document.getElementsByClassName(class_name);
+            ell = document.getElementsByTagName("a");
 
             for (let entry of ell) {
                 for (let title of titles) {
-                    if (entry.innerText.includes(title)) {
-                        for (let child of entry.childNodes)
-                        {
-                            child.text = "+++" + child.text;
-                        }
-                        console.log(entry.innerHTML);
+                    if (entry.text.includes(title)) {
+                        entry.text = "+++" + entry.text;
                         break;
                     }
                 }
