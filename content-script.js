@@ -16,8 +16,8 @@ chrome.storage.sync.get(
 
             for (let entry of ell) {
                 for (let title of titles) {
-                    if (entry.text.includes(title)) {
-                        entry.text = "+++" + entry.text;
+                    if (entry.innerText.includes(title)) {
+                        entry.innerText = "+++" + entry.innerText;
                         break;
                     }
                 }
@@ -26,18 +26,42 @@ chrome.storage.sync.get(
     }
 );
 
-// if (location.host === "example.com")
-// {
-//     document.body.style.backgroundColor = "yellow";
+if (false)
+{
+ell = document.getElementsByTagName("a");
 
-//     var someText = document.body.getElementsByTagName("h1");
-//     console.log(someText);
+a = [];
+for (let element of ell) {
+    a.push(element);
+}
 
-//     var targetHTML = document.body.getElementsByTagName("h1")[0].innerHTML;
-//     document.body.getElementsByTagName("h1")[0].innerHTML = targetHTML.replace("Example", "<u>Example</u>");
+target_node = [
+    'H1',
+    'H2',
+    'H3',
+    'H4',
+    'H5',
+    'H6',
+    'A'
+];
 
-//     console.log("======");
-//     var someText = document.body.getElementsByTagName("h1");
-//     console.log(someText);
+for (let element of a) {
+    if (a.length > 10000) {
+        break;
+    }
 
-// }
+    if (element.childElementCount > 0) {
+        for (let i=0; i<element.childElementCount; i++) {
+            a.push(element.childNodes[i]);
+        }
+        continue;
+    }
+
+    console.log("node name +++" + element.nodeName);
+    if (target_node.includes(element.nodeName)) {
+        console.log("+++" + element.innerHTML);
+        element.innerText = "+++" + element.innerText;
+    }
+    // console.log(element.innerText);
+}
+}
